@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>보험 전문가 모집 | 현실적인 부업</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- AOS 라이브러리 CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <!-- ✅ 헤더 -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>지금이 기회입니다.<br><span class="highlight">보험 전문가로 부업하세요!</span></h1>
+      <p>고소득, 전문 교육, 안정적인 지원 시스템을 원하신다면 지금 도전하세요.</p>
+      <div class="deadline" data-aos="fade-up" style="margin-top:40px;">
+        <p>모집 마감까지 남은 시간</p>
+        <h2 id="countdown-timer">00일 00:00:00</h2>
+      </div>
+      <button class="cta-btn" onclick="scrollToForm()">상담 신청하기</button>
+    </div>
+  </header>
+
+  <!-- ✅ WHY 섹션 -->
+  <section class="why">
+    <h2>왜 지금 보험 부업인가?</h2>
+    <div class="cards" data-aos="fade-up">
+      <div class="card">
+        <div class="icon"><i class="fas fa-coins"></i></div>
+        <h3>높은 수익성</h3>
+        <p>연간 억대 수입 설계사 다수, 실적에 따른 보상 체계</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-user-shield"></i></div>
+        <h3>초보자 가능</h3>
+        <p>업계 최고 전문가의 체계적인 교육 및 멘토링으로 초보자도 가능</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-rocket"></i></div>
+        <h3>자유로운 시간</h3>
+        <p>근무시간 조절 가능, 워라밸 실현</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ WHAT 섹션 -->
+  <section class="what" data-aos="fade-up" data-aos-delay="200">
+    <h2>행동 지원 시스템</h2>
+    <ul>
+      <li><i class="fas fa-check-circle" style="color:var(--secondary-color);margin-right:8px;"></i>보험 전문가가 직접 멘토링</li>
+      <li><i class="fas fa-check-circle" style="color:var(--secondary-color);margin-right:8px;"></i>실시간 맞춤 설계 제공</li>
+      <li><i class="fas fa-check-circle" style="color:var(--secondary-color);margin-right:8px;"></i>입사 시 지원금 500만원 지원</li>
+    </ul>
+  </section>
+
+  <!-- 내 첫달 급여 미리 확인해 보기 섹션 -->
+  <section class="salary-preview" data-aos="fade-up" style="max-width:420px;margin:40px auto 0 auto;text-align:center;">
+    <h2>내 첫달 급여 미리 확인해 보기</h2>
+    <p>내 가족 한달 보험료를 입력하면 첫달 급여를 미리 확인해 볼 수 있습니다.</p>
+    <div style="display:flex;gap:8px;justify-content:center;align-items:center;margin:18px 0;">
+      <input id="salary-input" type="number" min="1" placeholder="예: 50" style="padding:8px 12px;font-size:1rem;border-radius:8px;border:1px solid #ddd;width:110px;">
+      <span style="font-size:1rem;color:#888;">만원</span>
+      <button id="salary-btn" style="padding:8px 18px;font-size:1rem;border-radius:8px;background:var(--accent-color);color:var(--primary-color);font-weight:700;border:none;cursor:pointer;">급여 미리보기</button>
+    </div>
+    <div id="salary-result" style="font-size:1.1rem;font-weight:700;color:var(--primary-color);min-height:28px;"></div>
+    <div id="salary-extra-msg" style="font-size:0.98rem;color:#555;margin-top:6px;display:none;">내 가족 보장만 새로 분석해도 첫 달 급여는 이만큼 보장</div>
+  </section>
+
+  <!-- ✅ SOCIAL PROOF -->
+  <section class="proof" data-aos="fade-up" data-aos-delay="400">
+    <h2>성공 사례</h2>
+    <p>많은 설계사들이 이렇게 성장했습니다.</p>
+    <div class="slider-container">
+      <button class="slider-btn prev" id="prev-btn">&#8592;</button>
+      <div class="slider-viewport">
+        <div class="slider" id="proof-slider">
+          <!-- 슬라이드 항목은 JavaScript로 동적으로 추가됩니다 -->
+        </div>
+      </div>
+      <button class="slider-btn next" id="next-btn">&#8594;</button>
+    </div>
+  </section>
+
+  <!-- ✅ CTA & FORM -->
+  <section class="cta-form-container" data-aos="fade-up" data-aos-delay="600">
+    <div class="cta-form" id="contact-form">
+      <h2>지금 바로 시작하세요!</h2>
+      <form id="gform" action="https://docs.google.com/forms/d/e/1FAIpQLSf05BDD7b6iIybZIVZS7oZunBer4O-rYs-k70CI2hDdT-qc9Q/formResponse" 
+            method="POST">
+        <input type="text" name="entry.680101764" placeholder="이름" required>
+        <input type="tel" name="entry.1003756285" placeholder="연락처" required>
+        <button type="submit"><i class="fas fa-paper-plane"></i> 무료 상담 신청</button>
+      </form>
+      <p class="privacy">상담 신청 시 개인정보 활용에 동의하는 것으로 간주됩니다.</p>
+    </div>
+  </section>
+
+  <!-- ✅ 숨겨진 iframe (이제 사용하지 않음) -->
+
+  <!-- ✅ 푸터 -->
+  <footer>
+    <p>© 2025 보험 전문가 모집페이지 | 더금융서비스</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- AOS 라이브러리 JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script>
+    // 카운트다운 타이머 (마감일 2025년 8월 31일로 변경)
+    function updateCountdown() {
+      const end = new Date(2025, 7, 31, 23, 59, 59); // 2025년 8월 31일
+      const now = new Date();
+      const diff = end.getTime() - now.getTime();
+      const timerEl = document.getElementById('countdown-timer');
+      const deadlineSection = document.querySelector('.deadline');
+      if (!timerEl) return;
+      if (diff <= 0) {
+        timerEl.textContent = '마감되었습니다';
+        if(deadlineSection) deadlineSection.style.opacity = '0.5';
+        return;
+      }
+      if(deadlineSection) deadlineSection.style.opacity = '1';
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = String(Math.floor((diff / (1000*60*60)) % 24)).padStart(2,'0');
+      const m = String(Math.floor((diff / (1000*60)) % 60)).padStart(2,'0');
+      const s = String(Math.floor((diff / 1000) % 60)).padStart(2,'0');
+      timerEl.textContent = `${d}일 ${h}:${m}:${s}`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
