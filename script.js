@@ -41,7 +41,13 @@ console.log('슬라이더 코드 시작');
   const slides = slider.querySelectorAll('.slide');
   if (slides.length > 0) {
   const initSlider = () => {
-      slideWidth = slides[0].offsetWidth + 20; // 슬라이드 너비 + 마진
+      // slideWidth 계산
+      if (window.innerWidth <= 600) {
+        // 모바일에서는 뷰포트의 실제 width로 강제
+        slideWidth = sliderContainer.querySelector('.slider-viewport').offsetWidth;
+      } else {
+        slideWidth = slides[0].offsetWidth + 20; // 기존 PC용
+      }
     
       // 2. 무한 슬라이드를 위한 클론 생성 및 배치
       const allSlides = slider.querySelectorAll('.slide');
@@ -162,4 +168,13 @@ if (salaryInput && salaryBtn && salaryResult && salaryExtraMsg) {
     salaryResult.textContent = `예상 첫달 급여: ${result}만원`;
     salaryExtraMsg.style.display = 'block';
       });
+}
+
+// 무료 상담 신청 폼 제출 시 알림만 띄우고 실제 전송/이동 막기
+const gform = document.getElementById('gform');
+if (gform) {
+  gform.addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('상담 신청이 완료되었습니다! 담당자가 곧 연락드릴 예정입니다.');
+  });
 }
