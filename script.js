@@ -176,8 +176,12 @@ if (gform) {
   gform.addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // 폼 데이터 수집
+    // 폼 데이터 수집 및 확인
     const formData = new FormData(gform);
+    console.log('전송할 데이터:', {
+      이름: formData.get('entry.680101764'),
+      연락처: formData.get('entry.1003756285')
+    });
     
     // 숨겨진 iframe 생성하여 구글폼에 전송
     const iframe = document.createElement('iframe');
@@ -185,18 +189,23 @@ if (gform) {
     iframe.name = 'hidden-iframe';
     document.body.appendChild(iframe);
     
-    // 폼의 target을 iframe으로 설정
-    gform.target = 'hidden-iframe';
+    // iframe 로드 완료 시 확인
+    iframe.onload = function() {
+      console.log('구글폼 전송 완료');
+      alert('상담 신청이 완료되었습니다! 담당자가 곧 연락드릴 예정입니다.');
+      
+      // iframe 제거
+      setTimeout(() => {
+        if (document.body.contains(iframe)) {
+          document.body.removeChild(iframe);
+        }
+      }, 1000);
+    };
     
-    // 폼 제출
+    // 폼의 target을 iframe으로 설정하고 제출
+    gform.target = 'hidden-iframe';
     gform.submit();
     
-    // 알림 띄우기
-    alert('상담 신청이 완료되었습니다! 담당자가 곧 연락드릴 예정입니다.');
-    
-    // iframe 제거
-    setTimeout(() => {
-      document.body.removeChild(iframe);
-    }, 1000);
+    console.log('구글폼 전송 시작');
   });
 }
