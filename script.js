@@ -170,11 +170,33 @@ if (salaryInput && salaryBtn && salaryResult && salaryExtraMsg) {
       });
 }
 
-// 무료 상담 신청 폼 제출 시 알림만 띄우고 실제 전송/이동 막기
+// 무료 상담 신청 폼 제출 시 구글폼에 전송하고 알림 띄우기
 const gform = document.getElementById('gform');
 if (gform) {
   gform.addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    // 폼 데이터 수집
+    const formData = new FormData(gform);
+    
+    // 숨겨진 iframe 생성하여 구글폼에 전송
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'hidden-iframe';
+    document.body.appendChild(iframe);
+    
+    // 폼의 target을 iframe으로 설정
+    gform.target = 'hidden-iframe';
+    
+    // 폼 제출
+    gform.submit();
+    
+    // 알림 띄우기
     alert('상담 신청이 완료되었습니다! 담당자가 곧 연락드릴 예정입니다.');
+    
+    // iframe 제거
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+    }, 1000);
   });
 }
